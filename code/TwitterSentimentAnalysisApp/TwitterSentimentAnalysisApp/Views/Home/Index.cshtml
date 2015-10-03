@@ -1,0 +1,61 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron step step-zero">
+            <h1>Twitter Sentiment Analysis app</h1>
+            <p style="margin-top: 30px">
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-one">Predecir un tweet &raquo;</a>
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-two">Estudiar la popularidad de un término &raquo;</a>
+                @*<a class="btn btn-primary btn-lg navigation-button" data-target="step-three">Comparar términos &raquo;</a>*@
+            </p>
+        </div>
+        <div class="step step-one">
+            <h1>Predecir un tweet</h1>
+            <p>
+                <textarea id="predictTweet" placeholder="Ingrese el tweet.." maxlength="140"></textarea>
+                <a id="predictTweetButton" class="btn btn-default">Predecir &raquo;</a>
+                <span class="result"></span>
+            </p>
+            <p>
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-zero">&laquo; Home</a>
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-two">Estudiar la popularidad de un término &raquo;</a>
+                @*<a class="btn btn-primary btn-lg navigation-button" data-target="step-three">Comparar términos &raquo;</a>*@
+            </p>
+        </div>
+        <div class="step step-two">
+            <h1>Estudiar la popularidad de un término</h1>
+            <p>
+                <input id="studyTerm" placeholder="Ingrese el término.." />
+                <a id="studyTermButton" class="btn btn-default">Estudiar popularidad &raquo;</a>
+                <span class="result"></span>
+            </p>
+            <p>
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-one">&laquo; Predecir un tweet</a>
+                @*<a class="btn btn-primary btn-lg navigation-button" data-target="step-three">Comparar términos &raquo;</a>*@
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-zero">Home &raquo;</a>
+            </p>
+            <p>
+                <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+            </p>
+        </div>
+        @*<div class="step step-three">
+                <h1>Comparar términos</h1>
+                <p>
+                    <input id="compareTerm1" placeholder="Primer término a comparar.." maxlength="50" style="width: 200px" />
+                    <input id="compareTerm2" placeholder="Segundo término a comparar.." maxlength="50" style="width: 200px" />
+                    <a id="compareTermsButton" class="btn btn-default">Comparar popularidad &raquo;</a>
+                    <span class="result"></span>
+                </p>
+                <p>
+                    <a class="btn btn-primary btn-lg navigation-button" data-target="step-zero">&laquo;Home</a>
+                    <a class="btn btn-primary btn-lg navigation-button" data-target="step-two">&laquo; Estudiar la popularidad de un término</a>
+                </p>
+            </div>*@
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/Highcharts/highcharts.min.js"></script>
+    <script src="~/Scripts/Highcharts/exporting.min.js"></script>
+    <script src="~/Scripts/index.js"></script>
+}
