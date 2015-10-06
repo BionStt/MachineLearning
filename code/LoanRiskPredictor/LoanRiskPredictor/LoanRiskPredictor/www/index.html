@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://ussouthcentral.services.azureml.net/workspaces/86e5ded0bbfa4ff2a004406fc93e13a3/services/127c519b013c4f67a0d72855c55e18ca/ data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <title>LoanRiskPredictor</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/bootstrap-select.css" rel="stylesheet" />
+    <!-- LoanRiskPredictor references -->
+    <link href="css/index.css" rel="stylesheet" />
+</head>
+<body>
+    <h1 class="text-center">Predicción de riesgos de Préstamos</h1>
+    <p>Ingrese los valores del cliente que solicita el préstamo</p>
+    <div class="form-group">
+        <label for="StatusExistingAccount">Estado de la Cuenta Existente </label>
+        <select id="StatusExistingAccount" class="form-control">
+            <option value="A11">< $ 0 </option>
+            <option value="A12" selected>> $ 0 y < $ 200 </option>
+            <option value="A13">> $ 200 / depósitos de salario </option>
+            <option value="A14">Sin Cuenta</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="Duration">Duración en meses</label>
+        <input id="Duration" type="number" max="48" min="1" value="10"/>
+    </div>
+
+    <div class="form-group">
+        <label for="CreditHistory">Historia Crediticia</label>
+        <select id="CreditHistory" class="form-control">
+            <option value="A30" selected>Sin créditos / todos los créditos pagos en término</option>
+            <option value="A31">Todos los creditos en este banco pagos en término</option>
+            <option value="A32">Créditos existentes pagos en término hasta ahora</option>
+            <option value="A33">Retraso en pagos en el pasado</option>
+            <option value="A34">Cuenta crítica/Existen otros créditos(fuera del banco)</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="Purpose">Propósito</label>
+        <select id="Purpose" class="form-control">
+            <option value="A40">Automóvil (nuevo)</option>
+            <option value="A41">Automóvil (usado)</option>
+            <option value="A42">Muebles / Equipamiento</option>
+            <option value="A43">Televisión / Radio</option>
+            <option value="A44" selected>Electrodomésticos</option>
+            <option value="A45">Reparaciones</option>
+            <option value="A46">Educación</option>
+            <option value="A47">Vacaciones</option>
+            <option value="A48">Re-Entrenamiento</option>
+            <option value="A49">Negocios</option>
+            <option value="A410">Otros</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <label for="CreditAmount">Monto del Crédito</label>
+        <input id="CreditAmount" type="number" value="2000" />
+    </div>
+
+    <div class="form-group">
+
+        <label for="SavingAccounts">Ahorros / Bonos</label>
+        <select id="SavingAccounts" class="form-control">
+            <option value="A61" selected>Menor a $ 100 </option>
+            <option value="A62">Entre $ 100 y $ 500 </option>
+            <option value="A63">Entre $ 500 y $ 1000 </option>
+            <option value="A64">Más de $ 1000</option>
+            <option value="A65">Desconocido / Sin ahorros</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <label for="PresentEmploymentSince">Empleado desde</label>
+        <select id="PresentEmploymentSince" class="form-control">
+            <option value="A71">Desempleado</option>
+            <option value="A72">Menos de 1 año </option>
+            <option value="A73">Entre 1 año y 4 años</option>
+            <option value="A74" selected>Entre 4 años y  7 años</option>
+            <option value="A75">Mayor a 7 años</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <label for="InstallmentRate">Porcentaje de ingreso disponible</label>
+        <input id="InstallmentRate" type="number" max="100" min="0" value="1" />
+    </div>
+
+    <div class="form-group">
+
+        <label for="StatusAndSex">Sexo y Estado</label>
+        <select id="StatusAndSex" class="form-control">
+            <option value="A91">Hombre: Divorciado/Separado</option>
+            <option value="A92" selected>Mujer: Divorciada/Separada/Casada</option>
+            <option value="A93">Hombre: Soltero</option>
+            <option value="A94">Hombre: Casado/Viudo</option>
+            <option value="A95">Mujer: Soltera</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <label for="OtherDebtorsGuarantors">Otros Deudores / Garantes</label>
+        <select id="OtherDebtorsGuarantors" class="form-control">
+            <option value="A101" selected>Ninguno</option>
+            <option value="A102">Co-Solicitante</option>
+            <option value="A103">Garante</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <label for="PresentResidentSince">Vivienda actual desde</label>
+        <input id="PresentResidentSince" type="number" value="1"/>
+    </div>
+
+    <div class="form-group">
+
+        <label for="Property">Propiedad (Elegir el mayor disponible)</label>
+        <select id="Property" class="form-control">
+            <option value="A121" selected>Bienes Raíces</option>
+            <option value="A122">Seguro de vida</option>
+            <option value="A123">Automóvil u otros</option>
+            <option value="A124">Desconocido / Sin Propiedades</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <label for="Age">Edad en años</label>
+        <input id="Age" type="number" min="21" max="80" value="23" />
+    </div>
+
+    <div class="form-group">
+
+        <label for="OtherInstallments">Otros planes en cuotas</label>
+        <select id="OtherInstallments" class="form-control">
+            <option value="A141">Banco</option>
+            <option value="A142">Tiendas</option>
+            <option value="A143" selected>Ninguno</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <label for="Housing">Vivienda</label>
+        <select id="Housing" class="form-control">
+            <option value="A151">Alquila</option>
+            <option value="A152" selected>Propietario</option>
+            <option value="A153">Gratuita</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <label for="NumberOfCredits">Número de créditos en este banco</label>
+        <input id="NumberOfCredits" type="number" min="0" max="5" value="1" />
+    </div>
+
+    <div class="form-group">
+
+        <label for="Job">Trabajo</label>
+        <select id="Job" class="form-control">
+            <option value="A171">Desempleado / No capacitado - No residente</option>
+            <option value="A172">No capacitado - Residente</option>
+            <option value="A173" selected>Empleado capacitado</option>
+            <option value="A174">Management / Autónomo / Empleado muy especializado</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <label for="NumberOfPeopleMantained">Número de personas a las que provee pensión alimenticia</label>
+        <input id="NumberOfPeopleMantained" type="number" min="0" max="10" value="1" />
+    </div>
+
+    <div class="form-group">
+
+        <label for="Telephone">Teléfono</label>
+        <select id="Telephone" class="form-control">
+            <option value="A191">Ninguno</option>
+            <option value="A192" selected>Si, registrado a nombre del cliente</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <label for="ForeignWorker">Trabajador Extranjero</label>
+        <select id="ForeignWorker" class="form-control">
+            <option value="A201">Si</option>
+            <option value="A202" selected>No</option>
+        </select>
+    </div>
+
+
+    <div class="buttonArea text-center">
+        <button id="consultar" type="button" class="btn btn-primary">Consultar</button>
+    </div>
+
+    <div id="prediction" class="hidden high">
+        <div id="scoredprob" class="text-center"></div>
+        <div id="risk" class="text-center"></div>
+    </div>
+
+    <!-- Cordova reference, this is added to your app when it's built. -->
+    <script src="cordova.js"></script>
+    <script src="scripts/platformOverrides.js"></script>
+    <script src="scripts/jquery-2.1.4.js"></script>
+    <script src="scripts/bootstrap-select.js"></script>
+    <script src="scripts/index.js"></script>
+</body>
+</html>

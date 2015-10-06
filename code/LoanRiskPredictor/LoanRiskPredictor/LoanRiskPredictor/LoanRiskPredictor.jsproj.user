@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ReferenceCachePath>C:\Users\Diego\AppData\Local\Temp\LoanRiskPredictor_refcache</ReferenceCachePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
+    <DebuggerFlavor>RippleNexus7</DebuggerFlavor>
+    <AndroidEmulatorID>226C76AC-9E9A-4EBD-A495-79E8C5C5292F;VS Emulator 7" KitKat (4.4) XHDPI Tablet</AndroidEmulatorID>
+  </PropertyGroup>
+</Project>

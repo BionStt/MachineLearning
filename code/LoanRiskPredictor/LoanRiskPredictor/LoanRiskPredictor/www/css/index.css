@@ -1,0 +1,34 @@
+﻿.form-group {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.buttonArea {
+    margin-bottom: 10px;
+}
+
+p {
+    margin-left: 5px;
+}
+
+#prediction
+{
+    color: white;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.low {
+    background-color: darkolivegreen;
+}
+
+.high {
+    background-color: maroon;
+}
+
+#risk {
+    font-size: 20px;
+}
