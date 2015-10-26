@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    overflow-y: scroll;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -25,7 +26,7 @@ html, body, .row {
     overflow: hidden;
 }
 
-.row{
+.row {
     width: 9000px;
 }
 
@@ -35,31 +36,30 @@ html, body, .row {
     position: relative;
 }
 
-.step-one, .step-two, .step-three{
+.step-one, .step-two, .step-three {
     position: absolute;
     left: 100%;
     padding: 48px 60px;
 }
 
-.step textarea{
+.step textarea {
     width: 400px;
     height: 35px;
     padding-top: 5px;
 }
 
-.step input{
+.step input {
     height: 35px;
     width: 200px;
     padding-top: 5px;
 }
 
-.step .result{
-    height: 30px;
+.step .result {
     line-height: 30px;
     display: block;
 }
 
-.step-two .btn-default, .step-three .btn-default{
+.step-two .btn-default, .step-three .btn-default {
     position: relative;
     top: -3px;
 }
