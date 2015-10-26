@@ -40,9 +40,18 @@ namespace TwitterSentimentAnalysisApp.Controllers
         // POST api/sentiment/compare
         [Route("compare")]
         [HttpPost]
-        public string CompareTerms(CompareTermsModel model)
+        public async Task<List<string>> CompareTerms(CompareTermsModel model)
         {
-            return "value";
+            // Get tweets of the term
+            var twitterSearcher = new TwitterSearcher();
+            var results = new List<string>();
+            foreach(var term in model.Terms)
+            {
+                var result = await this.StudyTermAsync(new StudyTermModel { Term = term });
+                results.Add(result);
+            }
+
+            return results;
         }
 
         private async Task<string> PredictTweetsAsync(IEnumerable<string> tweets)
@@ -85,8 +94,7 @@ namespace TwitterSentimentAnalysisApp.Controllers
 
     public class CompareTermsModel
     {
-        public string Term1 { get; set; }
-        public string Term2 { get; set; }
+        public string[] Terms { get; set; }
     }
 
     public class StringTable
