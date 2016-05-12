@@ -1,0 +1,65 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="jumbotron step step-zero">
+            <h1>Twitter Sentiment Analysis app</h1>
+            <p style="margin-top: 30px">
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-one">Predict a tweet &raquo;</a>
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-two">See a term popularity &raquo;</a>
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-three">Compare terms &raquo;</a>
+            </p>
+        </div>
+        <div class="step step-one">
+            <h1>Predict a tweet</h1>
+            <p>
+                <textarea id="predictTweet" placeholder="Enter a tweet.." maxlength="140"></textarea>
+                <a id="predictTweetButton" class="btn btn-default">Predict &raquo;</a>
+                <span class="result"></span>
+            </p>
+            <p>
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-zero">&laquo; Home</a>
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-two">See the popularity of a term &raquo;</a>
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-three">Compare terms &raquo;</a>
+            </p>
+        </div>
+        <div class="step step-two">
+            <h1>See the popularity of a term</h1>
+            <p>
+                <input id="studyTerm" placeholder="Enter a term.." />
+                <a id="studyTermButton" class="btn btn-default">See term sentiment &raquo;</a>
+                <span class="result"></span>
+            </p>
+            <p>
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-one">&laquo; Predict a tweet</a>
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-three">Compare terms &raquo;</a>
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-zero">Home &raquo;</a>
+            </p>
+            <p>
+                <div class="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+            </p>
+        </div>
+        <div class="step step-three">
+            <h1>Compare terms</h1>
+            <p>
+                <input id="compareTerm1" placeholder="First term.." maxlength="50" style="width: 200px" />
+                <input id="compareTerm2" placeholder="Second term.." maxlength="50" style="width: 200px" />
+                <input id="compareTerm3" placeholder="Third term.." maxlength="50" style="width: 200px" />
+                <a id="compareTermsButton" class="btn btn-default">Compare popularity &raquo;</a>
+                <p class="result"></p>
+            </p>
+            <p>
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-zero">&laquo;Home</a>
+                <a class="btn btn-primary btn-lg navigation-button" data-target="step-two">&laquo; See popularity of a term</a>
+            </p>
+            <p>
+                <div class="container" style="min-width: 310px; height: 600px; max-width: 600px; margin: 0 auto"></div>
+            </p>
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/Highcharts/highcharts.min.js"></script>
+    <script src="~/Scripts/Highcharts/exporting.min.js"></script>
+    <script src="~/Scripts/index.js"></script>
+}

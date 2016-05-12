@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://ussouthcentral.services.azureml.net/workspaces/86e5ded0bbfa4ff2a004406fc93e13a3/services/110f0f868ab84868a813acf3604c6e32/ data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link href="css/bootstrap.css" rel="stylesheet" />
+        <link href="css/bootstrap-select.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Loan Risk Predictor</title>
+    </head>
+    <body>
+        <h1 class="text-center">Loan Risk Predictor</h1>
+        <p>Enter the information about the customer who asks for the loan</p>
+        <div class="form-group">
+            <label for="StatusExistingAccount">Status of existing checking account</label>
+            <select id="StatusExistingAccount" class="form-control">
+                <option value="A11">< 0 DM </option>
+                <option value="A12" selected>> $ 0 & < $ 200 </option>
+                <option value="A13">>=200 DM / salary assignments for at least 1 year</option>
+                <option value="A14">no checking account</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="Duration">Duration in month</label>
+            <input id="Duration" type="number" max="48" min="1" value="10"/>
+        </div>
+
+        <div class="form-group">
+            <label for="CreditHistory">Credit history</label>
+            <select id="CreditHistory" class="form-control">
+                <option value="A30" selected>no credits taken/ all credits paid back duly</option>
+                <option value="A31">all credits at this bank paid back duly</option>
+                <option value="A32">existing credits paid back duly till now</option>
+                <option value="A33">delay in paying off in the past</option>
+                <option value="A34">critical account/ other credits existing (not at this bank)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Purpose">Purpose</label>
+            <select id="Purpose" class="form-control">
+                <option value="A40">car (new)</option>
+                <option value="A41">car (used)</option>
+                <option value="A42">furniture/equipment</option>
+                <option value="A43">radio/television</option>
+                <option value="A44" selected>domestic appliances</option>
+                <option value="A45">repairs</option>
+                <option value="A46">education</option>
+                <option value="A47">(vacation - does not exist?)</option>
+                <option value="A48">retraining</option>
+                <option value="A49">business</option>
+                <option value="A410">others</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <label for="CreditAmount">Credit Amount</label>
+            <input id="CreditAmount" type="number" value="2000" />
+        </div>
+
+        <div class="form-group">
+
+            <label for="SavingAccounts">Savings account/bonds</label>
+            <select id="SavingAccounts" class="form-control">
+                <option value="A61" selected>< 100 DM</option>
+                <option value="A62">100 <= ... < 500 DM</option>
+                <option value="A63">500 <= ... < 1000 DM</option>
+                <option value="A64"> >= 1000 DM</option>
+                <option value="A65">unknown/ no savings account</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <label for="PresentEmploymentSince">Present employment since</label>
+            <select id="PresentEmploymentSince" class="form-control">
+                <option value="A71">unemployed</option>
+                <option value="A72">< 1 year</option>
+                <option value="A73">1 <= ... < 4 years </option>
+                <option value="A74" selected>4 <= ... < 7 years </option>
+                <option value="A75">>= 7 years</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <label for="InstallmentRate">Installment rate in percentage of disposable income</label>
+            <input id="InstallmentRate" type="number" max="100" min="0" value="1" />
+        </div>
+
+        <div class="form-group">
+
+            <label for="StatusAndSex">Personal status and sex</label>
+            <select id="StatusAndSex" class="form-control">
+                <option value="A91">male : divorced/separated </option>
+                <option value="A92" selected>female : divorced/separated/married</option>
+                <option value="A93">male : single </option>
+                <option value="A94">male : married/widowed</option>
+                <option value="A95">female : single</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <label for="OtherDebtorsGuarantors">Other debtors / guarantors</label>
+            <select id="OtherDebtorsGuarantors" class="form-control">
+                <option value="A101" selected>none</option>
+                <option value="A102">co-applicant</option>
+                <option value="A103">guarantor</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <label for="PresentResidentSince">Present residence since</label>
+            <input id="PresentResidentSince" type="number" value="1"/>
+        </div>
+
+        <div class="form-group">
+
+            <label for="Property">Property (select first available)</label>
+            <select id="Property" class="form-control">
+                <option value="A121" selected>real estate</option>
+                <option value="A122">building society savings agreement/ life insurance</option>
+                <option value="A123">car or other</option>
+                <option value="A124">unknown / no property</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <label for="Age">Age in years</label>
+            <input id="Age" type="number" min="21" max="80" value="23" />
+        </div>
+
+        <div class="form-group">
+
+            <label for="OtherInstallments">Other installment plans</label>
+            <select id="OtherInstallments" class="form-control">
+                <option value="A141">Bank</option>
+                <option value="A142">Stores</option>
+                <option value="A143" selected>None</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <label for="Housing">Housing</label>
+            <select id="Housing" class="form-control">
+                <option value="A151">Rent</option>
+                <option value="A152" selected>Own</option>
+                <option value="A153">For free</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <label for="NumberOfCredits">Number of existing credits at this bank</label>
+            <input id="NumberOfCredits" type="number" min="0" max="5" value="1" />
+        </div>
+
+        <div class="form-group">
+
+            <label for="Job">Job</label>
+            <select id="Job" class="form-control">
+                <option value="A171">unemployed/ unskilled - non-resident</option>
+                <option value="A172">unskilled - resident</option>
+                <option value="A173" selected>skilled employee / official</option>
+                <option value="A174"> management/ self-employed/ highly qualified employee/ officer</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <label for="NumberOfPeopleMantained">Number of people being liable to provide maintenance for</label>
+            <input id="NumberOfPeopleMantained" type="number" min="0" max="10" value="1" />
+        </div>
+
+        <div class="form-group">
+
+            <label for="Telephone">Telephone</label>
+            <select id="Telephone" class="form-control">
+                <option value="A191">None</option>
+                <option value="A192" selected>yes, registered under the customers name</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <label for="ForeignWorker">Foreign worker</label>
+            <select id="ForeignWorker" class="form-control">
+                <option value="A201">Yes</option>
+                <option value="A202" selected>No</option>
+            </select>
+        </div>
+
+
+        <div class="buttonArea text-center">
+            <button id="consultar" type="button" class="btn btn-primary">Query</button>
+        </div>
+
+        <div id="prediction" class="hidden high">
+            <div id="scoredprob" class="text-center"></div>
+            <div id="risk" class="text-center"></div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script src="js/jquery-2.1.4.js"></script>
+        <script src="js/bootstrap-select.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
